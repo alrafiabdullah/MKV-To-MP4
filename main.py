@@ -1,5 +1,8 @@
 import os
 
+if not os.path.exists("assets"):
+    raise Exception("Please create and put all your vidoes in assets folder!")
+
 mkv_list = os.listdir("assets")
 
 if not os.path.exists("result"):
@@ -7,13 +10,10 @@ if not os.path.exists("result"):
 
 
 for mkv in mkv_list:
-    try:
-        name, ext = os.path.splitext(mkv)
-        if ext != ".mkv":
-            print("Please add MKV files only!")
-            break
-        output_name = name + ".mp4"
-        os.system(
-            f"cmd /c ffmpeg -i assets/{mkv} -codec copy result/{output_name}")
-    except:
-        print("Please add MKV formatted VIDEO files only!")
+    name, ext = os.path.splitext(mkv)
+    if ext != ".mkv":
+        raise Exception("Please add MKV files only!")
+
+    output_name = name + ".mp4"
+    os.system(
+        f"cmd /c ffmpeg -i assets/{mkv} -codec copy result/{output_name}")
