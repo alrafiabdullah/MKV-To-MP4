@@ -7,10 +7,13 @@ if not os.path.exists("result"):
 
 
 for mkv in mkv_list:
-    name, ext = os.path.splitext(mkv)
-    if ext != ".mkv":
-        print("Please add MKV files only!")
-        break
-    output_name = name + ".mp4"
-    os.system(
-        f"cmd /c ffmpeg -i assets/{mkv} -codec copy result/{output_name}")
+    try:
+        name, ext = os.path.splitext(mkv)
+        if ext != ".mkv":
+            print("Please add MKV files only!")
+            break
+        output_name = name + ".mp4"
+        os.system(
+            f"cmd /c ffmpeg -i assets/{mkv} -codec copy result/{output_name}")
+    except:
+        print("Please add MKV formatted VIDEO files only!")
