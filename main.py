@@ -17,3 +17,6 @@ for mkv in mkv_list:
     output_name = name + ".mp4"
     os.system(
         f"cmd /c ffmpeg -i assets/{mkv} -codec copy result/{output_name}")
+
+print(f"{len(mkv_list)} video(s) converted to MP4!")
+os.startfile("result")
