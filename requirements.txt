@@ -1,0 +1,4 @@
+autopep8==1.5.6
+future==0.18.2
+pycodestyle==2.7.0
+toml==0.10.2
